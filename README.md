@@ -3,13 +3,13 @@
 An example implementation of Spring Boot R2DBC and Quartz with PostgreSQL database.
 
 ## Technology stack
-* Java 21
+* Java 17
 * Maven
 * PostgreSQL 17
 * Docker
 
 ## Java Dependencies
-* Spring Boot 3.4.1 + Quartz starter
+* Spring Boot 3.4.1 + Quartz + hikari + liquibase
 * Spring Data R2DBC
 * R2DBC PostgreSQL Driver
 
