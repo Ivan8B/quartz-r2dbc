@@ -1,0 +1,33 @@
+spring:
+  liquibase:
+    change-log: 'classpath:db/changelog/master.xml'
+    url: 'jdbc:postgresql://localhost:5432/postgres'
+    user: postgres
+    password: postgres
+  r2dbc:
+    url: 'r2dbc:postgresql://postgres:postgres@localhost:5432/postgres'
+    pool:
+      enabled: true
+      initial-size: '5'
+      max-size: '10'
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceId: AUTO
+          jobStore:
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            isClustered: true
+          dataSource:
+            quartzDS:
+              driver: org.postgresql.Driver
+              URL: 'jdbc:postgresql://localhost:5432/postgres'
+              user: postgres
+              password: postgres
+
+logging:
+  config: classpath:log4j2.yml

@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS something
+(
+    id                 BIGINT GENERATED ALWAYS AS IDENTITY
+);
