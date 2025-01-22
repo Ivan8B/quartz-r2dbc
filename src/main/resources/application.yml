@@ -15,19 +15,22 @@ spring:
     jdbc:
       initialize-schema: never
     properties:
-      org:
+      org.quartz.scheduler:
+        instanceName: Scheduler
+        instanceId: AUTO
+      org.quartz.jobStore:
+        dataSource: quartz
+        isClustered: true
+        class: org.quartz.impl.jdbcjobstore.JobStoreTX
+        driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+        tablePrefix: qrtz_
+      org.quartz.dataSource:
         quartz:
-          scheduler:
-            instanceId: AUTO
-          jobStore:
-            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
-            isClustered: true
-          dataSource:
-            quartzDS:
-              driver: org.postgresql.Driver
-              URL: 'jdbc:postgresql://localhost:5432/postgres'
-              user: postgres
-              password: postgres
+          driver: org.postgresql.Driver
+          provider: hikaricp
+          URL: 'jdbc:postgresql://localhost:5432/postgres'
+          user: postgres
+          password: postgres
 
 logging:
   config: classpath:log4j2.yml
