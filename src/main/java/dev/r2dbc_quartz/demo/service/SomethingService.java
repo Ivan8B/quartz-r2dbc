@@ -2,11 +2,13 @@ package dev.r2dbc_quartz.demo.service;
 
 import dev.r2dbc_quartz.demo.entity.Something;
 import dev.r2dbc_quartz.demo.repository.SomethingRepository;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import reactor.core.publisher.Mono;
+
+import java.util.Objects;
 
 @Service
 public class SomethingService {
@@ -19,10 +21,10 @@ public class SomethingService {
     }
 
     @Transactional
-    public Mono<Something> doCreateSomething() {
-        logger.info("Something created with id");
+    public void doCreateSomething() {
         Something something = new Something();
-        somethingRepository.save(something);
+        logger.info("Something created with id {}",
+                Objects.requireNonNull(somethingRepository.save(something).block()).getId());
     }
 
 }
