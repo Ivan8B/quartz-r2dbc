@@ -1,4 +1,4 @@
-package scheduling;
+package dev.r2dbc_quartz.demo.scheduling;
 
 import dev.r2dbc_quartz.demo.service.SomethingService;
 import org.quartz.Job;

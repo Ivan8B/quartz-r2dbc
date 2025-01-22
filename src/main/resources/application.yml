@@ -22,7 +22,7 @@ spring:
         dataSource: quartz
         isClustered: true
         class: org.quartz.impl.jdbcjobstore.JobStoreTX
-        driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+        driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
         tablePrefix: qrtz_
       org.quartz.dataSource:
         quartz:
